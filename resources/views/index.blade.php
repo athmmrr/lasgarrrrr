@@ -100,7 +100,7 @@
         }
 
         .sidebar a i {
-            margin-right: 10px;
+            margin-right: 10px;aaaaaaah
         }
 
         .main-content {
@@ -197,16 +197,27 @@
                 width: 100%;
             }
         }
-    </style>
-</head>
-<body>
-    <div class="d-flex flex-column">
+        .logo {
+         width: 50px; /* Atur ukuran sesuai kebutuhan */
+         height: 50px; /* Atur ukuran sesuai kebutuhan */
+         object-fit: cover; /* Memastikan gambar tetap proporsional */
+        }
+
+        .rounded-circle {
+         border-radius: 50%; /* Membuat gambar menjadi bulat */
+        }
+
+            </style>
+         </head>
+         <body>
+       <div class="d-flex flex-column">
         <div class="top-bar">
-            <div class="d-flex align-items-center">
-                <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
-                <img src="{{ asset('img/lapas.png') }}" alt="Logo" class="logo">
-                <span class="title">JurnalLasgar</span>
-            </div>
+        <div class="d-flex align-items-center">
+    <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+    <img src="{{ asset('img/lapas.png') }}" alt="Logo" class="logo rounded-circle">
+    <span class="title">JurnalLasgar</span>
+</div>
+
             <div class="search-bar">
                 <input type="text" class="form-control" placeholder="Search">
                 <i class="fas fa-search search-icon"></i>
@@ -226,7 +237,6 @@
                     <li><a href="{{ route('agenda.create') }}"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
                     <li><a href="{{ route('atensi.index') }}"><i class="fas fa-list"></i> Atensi</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a href="#"><i class="fas fa-plus"></i> Another Form</a></li>
                 </ul>
             </div>
         @elseif (auth()->user()->hasRole('superadmin'))
@@ -240,7 +250,6 @@
                     <li><a href="{{ route('agenda.create') }}"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
                     <li><a href="{{ route('atensi.index') }}"><i class="fas fa-list"></i> Atensi</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a href="#"><i class="fas fa-plus"></i> Another Form</a></li>
                 </ul>
             </div>
             @else
@@ -254,7 +263,6 @@
                                 <li><a href="{{ route('agenda.create') }}"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
                                 <li><a href="{{ route('atensi.index') }}"><i class="fas fa-list"></i> Atensi</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a href="#"><i class="fas fa-plus"></i> Another Form</a></li>
                             </ul>
                         </div>
                         <div class="dropdown">

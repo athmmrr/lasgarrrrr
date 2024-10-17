@@ -18,4 +18,10 @@ class User extends Authenticatable
     {
         return $this->role === $role;
     }
+
+    // Menambahkan metode hasAnyRole
+    public function hasAnyRole(array $roles)
+    {
+        return in_array($this->role, $roles);
+    }
 }
