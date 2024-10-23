@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\AuthController;
 use App\Exports\AgendaExport;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,20 +16,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Rute untuk otentikasi
-Auth::routes();
+
 
 // Rute setelah login berhasil
-Route::get('/home', function () {
-    // Mengarahkan pengguna ke halaman yang sesuai berdasarkan peran
-    if (Auth::user()->hasRole('super_admin')) {
-        return redirect()->route('super_admin.dashboard');
-    } elseif (Auth::user()->hasRole('admin')) {
-        return redirect()->route('admin.dashboard');
-    } else {
-        return redirect()->route('dashboard'); // Rute untuk user biasa
-    }
-})->name('home');
 
 // Kelompok rute untuk pengguna yang telah login (user biasa)
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -80,8 +70,25 @@ Route::get('/export-agenda', function () {
     return $export->export();
 });
 
-// Rute untuk logout
-Route::post('/logout', function () {
-    Auth::logout();
-    return redirect('/'); // Mengarahkan ke halaman utama
-})->name('logout');
+Route::get('login', [AuthController::class,'index'])->name('login');
+Route::get('register', [AuthController::class,'register'])->name('register');
+Route::post('proses_login', [AuthController::class,'proses_login'])->name('proses_login');
+Route::post('logout', [AuthController::class,'logout'])->name('logout');
+
+Route::post('proses_register',[AuthController::class,'proses_register'])->name('proses_register');
+
+// kita atur juga untuk middleware menggunakan group pada routing
+// didalamnya terdapat group untuk mengecek kondisi login
+// jika user yang login merupakan admin maka akan diarahkan ke AdminController
+// jika user yang login merupakan user biasa maka akan diarahkan ke UserController
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['cek_login:admin']], function () {
+        Route::resource('admin', AdminController::class);
+    });
+    Route::group(['middleware' => ['cek_login:user']], function () {
+        Route::resource('user', UserController::class);
+    });
+});
+
+
+

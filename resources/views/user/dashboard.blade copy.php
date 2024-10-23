@@ -3,42 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>user</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        .dashboard-card {
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .dashboard-metrics {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .metric-box {
-            flex: 1;
-            padding: 20px;
-            border-radius: 8px;
-            color: white;
-            text-align: center;
-        }
-        .metric-box h2 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        .metric-box p {
-            font-size: 18px;
-        }
-        .table-wrapper {
-            margin-top: 30px;
-        }
-    </style>
 </head>
 <body>
 <aside class="sidebar" id="sidebar">
-            <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard Admin</a>
+            <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard </a>
             <div class="dropdown">
                 <a href="#" id="formsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-folder-open"></i> Forms

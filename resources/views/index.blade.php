@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -14,6 +14,7 @@
             padding: 0;
         }
 
+        /* Top bar styling */
         .top-bar {
             background-color: #ffffff;
             padding: 10px 20px;
@@ -28,19 +29,20 @@
         }
 
         .top-bar img.logo {
-            max-width: 50px;
-            height: auto;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
             margin-right: 10px;
-            margin-left: 10px;
         }
 
         .title {
             font-size: 24px;
             font-weight: bold;
             color: #333;
-            margin-left: 10px;
         }
 
+        /* Search bar styling */
         .search-bar {
             position: relative;
             width: 30%;
@@ -62,6 +64,7 @@
             color: #6c757d;
         }
 
+        /* Sidebar styling */
         .sidebar-and-content {
             display: flex;
             margin-top: 60px;
@@ -92,6 +95,7 @@
             text-decoration: none;
             margin-bottom: 10px;
             border-radius: 5px;
+            transition: background-color 0.2s ease;
         }
 
         .sidebar a:hover {
@@ -100,9 +104,10 @@
         }
 
         .sidebar a i {
-            margin-right: 10px;aaaaaaah
+            margin-right: 10px;
         }
 
+        /* Main content area */
         .main-content {
             flex-grow: 1;
             padding: 20px;
@@ -111,230 +116,110 @@
             transition: margin-left 0.3s ease;
         }
 
+        /* Dashboard metrics */
+        .dashboard-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-box {
+            flex: 1;
+            min-width: 150px;
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            background-color: #343a40;
+            transition: background-color 0.3s ease;
+        }
+
+        .metric-box h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .metric-box p {
+            font-size: 18px;
+        }
+
+        .metric-box.bg-primary { background-color: #007bff; }
+        .metric-box.bg-success { background-color: #28a745; }
+        .metric-box.bg-warning { background-color: #ffc107; }
+        .metric-box.bg-danger { background-color: #dc3545; }
+
+        /* Table styling */
+        .table-wrapper {
+            margin-top: 30px;
+        }
+
+        .table thead {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f2f2f2;
+        }
+
+        /* Sidebar toggle icon */
         .menu-icon {
             font-size: 30px;
             cursor: pointer;
-            margin-left: 0px;
+            margin-left: 0;
             margin-right: 10px;
             color: #007bff;
         }
 
-        .banner {
-            position: relative;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .banner img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .overlay-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .overlay-text h2 {
-            font-size: 36px;
-            font-weight: bold;
-        }
-
-        .overlay-text p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        .breadcrumb {
-            background-color: transparent;
-            padding: 0;
-            margin-bottom: 20px;
-        }
-
-        .breadcrumb-item a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .breadcrumb-item.active {
-            color: #6c 757d;
-        }
-
-        .agenda-item {
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #e7f0dc;
-            border-radius: 5px;
-            color: #000;
-        }
-
-        .dropdown-menu {
-            padding: 10px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 5px 0;
-            color: black;
-            text-decoration: none;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #007bff;
-            color: white;
-        }
-
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .main-content {
                 margin-left: 0;
                 width: 100%;
             }
-        }
-        .logo {
-         width: 50px; /* Atur ukuran sesuai kebutuhan */
-         height: 50px; /* Atur ukuran sesuai kebutuhan */
-         object-fit: cover; /* Memastikan gambar tetap proporsional */
-        }
-
-        .rounded-circle {
-         border-radius: 50%; /* Membuat gambar menjadi bulat */
-        }
-
-            </style>
-         </head>
-         <body>
-       <div class="d-flex flex-column">
-        <div class="top-bar">
-        <div class="d-flex align-items-center">
-    <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
-    <img src="{{ asset('img/lapas.png') }}" alt="Logo" class="logo rounded-circle">
-    <span class="title">JurnalLasgar</span>
-</div>
-
-            <div class="search-bar">
-                <input type="text" class="form-control" placeholder="Search">
-                <i class="fas fa-search search-icon"></i>
-            </div>
-        </div>
-        <div class="sidebar-and-content">
-        <div class="sidebar" id="sidebar">
-    @auth
-        @if (auth()->user()->hasRole('admin'))
-            <!-- Sidebar for admin -->
-            <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard Admin</a>
-            <div class="dropdown">
-                <a href="#" id="formsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-folder-open"></i> Forms
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="formsDropdown">
-                    <li><a href="{{ route('agenda.create') }}"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
-                    <li><a href="{{ route('atensi.index') }}"><i class="fas fa-list"></i> Atensi</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                </ul>
-            </div>
-        @elseif (auth()->user()->hasRole('superadmin'))
-            <!-- Sidebar for super admin -->
-            <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard Super Admin</a>
-            <div class="dropdown">
-                <a href="#" id="formsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-folder-open"></i> Forms
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="formsDropdown">
-                    <li><a href="{{ route('agenda.create') }}"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
-                    <li><a href="{{ route('atensi.index') }}"><i class="fas fa-list"></i> Atensi</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                </ul>
-            </div>
-            @else
-                        <!-- Sidebar for other roles -->
-                        <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                        <div class="dropdown">
-                            <a href="#" id="formsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-folder-open"></i> Forms
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="formsDropdown">
-                                <li><a href="{{ route('agenda.create') }}"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
-                                <li><a href="{{ route('atensi.index') }}"><i class="fas fa-list"></i> Atensi</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                            </ul>
-                        </div>
-                        <div class="dropdown">
-                            <a href="#" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user-circle"></i> Akun
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-                                <li><a href="{{ route('profile.show') }}"><i class="fas fa-user"></i> Profile</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a href="{{ route('logout') }}" 
-                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i> Logout
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    @endif
-
-        <!-- Logout link available for all authenticated users -->
-        <a href="{{ route('logout') }}"
-           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-           <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-    @endauth
-</div>
-
-            </div>
-            <div class="main-content" id="mainContent">
-                <div class="banner">
-                    <img src="{{ asset('img/lapas2.jpg') }}" alt="Banner" class="img-fluid">
-                    <div class="overlay-text">
-                        <h2>S.I.A.P LAPAS KELAS IIA GARUT</h2>
-                        <p>Sistem Informasi Agenda Pemasyarakatan</p>
-                    </div>
-                </div>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </nav>
-                <h3>Agenda</h3>
-                <div class="agenda-item">Agenda item 1</div>
-                <div class="agenda-item">Agenda item 2</div>
-                <div class="agenda-item">Agenda item 3</div>
-                <div class="agenda-item">Agenda item 4</div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById("sidebar");
-            var mainContent = document.getElementById("mainContent");
-
-            if (sidebar.classList.contains("show")) {
-                sidebar.classList.remove("show");
-                mainContent.style.marginLeft = "0";
-            } else {
-                sidebar.classList.add("show");
-                mainContent.style.marginLeft = "250px";
+            .sidebar {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                left: -100%;
+                top: 0;
+            }
+            .sidebar.show {
+                left: 0;
             }
         }
+    </style>
+</head>
+<body>
+    <!-- Top bar -->
+    <header class="top-bar">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-bars menu-icon" onclick="toggleSidebar()"></i>
+            <img src="{{ asset('img/lapas.png') }}" alt="Logo" class="logo">
+            <span class="title">JurnalLasgar</span>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="form-control" placeholder="Search">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+    </header>
+
+    <div class="sidebar-and-content">
+        <!-- Sidebar -->
+        
+
+        <!-- Main content -->
+
+            @yield('konten')
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

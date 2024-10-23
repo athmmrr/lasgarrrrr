@@ -11,17 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'role',
+        'name', 'email','username', 'password', 'level',
     ];
 
-    public function hasRole($role)
-    {
-        return $this->role === $role;
-    }
-
-    // Menambahkan metode hasAnyRole
-    public function hasAnyRole(array $roles)
-    {
-        return in_array($this->role, $roles);
-    }
 }
