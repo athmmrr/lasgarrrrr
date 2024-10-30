@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('conten')
 <div class="container">
     <h2>Edit Atensi</h2>
     <form action="{{ route('atensi.update', $atensi->id) }}" method="POST" enctype="multipart/form-data">

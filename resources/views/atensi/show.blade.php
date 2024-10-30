@@ -1,7 +1,7 @@
 {{-- atensi/show.blade.php --}}
 @extends('layouts.app')
 
-@section('content')
+@section('conten')
 <div class="container mt-5">
     <h2 class="text-center">Detail Atensi</h2>
     

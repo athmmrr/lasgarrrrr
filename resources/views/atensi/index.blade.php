@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('conten')
 <div class="container">
     <h2>Daftar Atensi</h2>
     <!-- Tombol Buat Atensi -->

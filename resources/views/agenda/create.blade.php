@@ -67,6 +67,8 @@
             </div>
         @endif
 
+        
+
         <form action="{{ route('agenda.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- Hari/Tanggal -->

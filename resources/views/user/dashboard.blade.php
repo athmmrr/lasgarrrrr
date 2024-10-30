@@ -3,7 +3,7 @@
 @section('konten')
 
 <aside class="sidebar" id="sidebar">
-            <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard Admin</a>
+            <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard </a>
             <div class="dropdown">
                 <a href="#" id="formsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-folder-open"></i> Forms

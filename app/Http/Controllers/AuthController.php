@@ -80,7 +80,7 @@ class AuthController extends Controller
 
      public function register(){
       // tampilkan view register
-        return view('register');
+        return view('auth.register');
       }
 
 
@@ -110,7 +110,7 @@ class AuthController extends Controller
         User::create($request->all());
 
          // kalo berhasil arahkan ke halaman login
-        return redirect()->route('login');
+        return redirect()->route('auth.login');
       }
 
      public function logout(Request $request){
@@ -122,6 +122,6 @@ class AuthController extends Controller
 
         Auth::logout();
 // kembali kan ke halaman login
-        return redirect('welcomep');
+        return redirect('welcome');
       }
 }

@@ -6,6 +6,8 @@ use App\Models\Agenda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use PDF;
+
 
 class AgendaController extends Controller
 {
@@ -110,7 +112,7 @@ class AgendaController extends Controller
             'keterangan' => $validatedData['keterangan'],
             'link_surat' => $validatedData['link_surat'],
             'laporan_kegiatan' => $validatedData['laporan_kegiatan'],
-            'dokumen_data_pendukung' => $dokumen,
+            'dokumen_data_pendukung' => $validatedData['dokumen'],,
         ]);
 
         // Redirect dengan pesan sukses

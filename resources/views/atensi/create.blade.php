@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('conten')
 <style>
     body {
         background-color: #f8f9fa; /* Warna latar belakang yang sama dengan agenda */
